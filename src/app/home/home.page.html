@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Controle de Tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item *ngIf="tarefas.length < 1">
+      <ion-label>Não há tarefas!</ion-label>
+    </ion-item>
+    <ion-item-sliding *ngFor="let tarefa of tarefas">
+      <ion-item (click)="abrirOpcoes(tarefa)">
+        <ion-label>{{tarefa.nome}}</ion-label>
+        <ion-icon slot="start" name="radio-button-off" color="success"></ion-icon>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="danger">Excluir</ion-item-option>
+        <ion-item-option color="success" >Salvar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="white" (click)="addTarefa()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- <div id="container">
+    <strong class="capitalize">{{ folder }}</strong>
+    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+</ion-content>
