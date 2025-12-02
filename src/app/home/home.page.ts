@@ -60,15 +60,15 @@ export class HomePage {
   atualizaLocalStorage() {
     localStorage.setItem('tarefaDb', JSON.stringify(this.tarefas));
   }
-  async abrirOpcoes(tarefa: any) {
+  async abrirOpcoes(tarefa: any, i:any) {
     const actsheet = await this.actionSheetCtrl.create({
       header: 'Escolha uma ação',
       buttons: [
         {
-          text: tarefa.feito ? 'Desmarcar como feito' : 'Marcar como feito',
-          icon: tarefa.feito ? 'checkmark-circle-outline' : 'checkmark-done-circle-outline',
+          text: tarefa.feita ? ' Desmarcar' : 'Marcar ',
+          icon: tarefa.feita ? 'checkmark-circle-outline' : 'checkmark-done-circle-outline',
           handler: () => {
-            tarefa.feito = !tarefa.feito;
+            this.tarefas[i].feita =!this.tarefas[i].feita;
             this.atualizaLocalStorage();
           }
         },
