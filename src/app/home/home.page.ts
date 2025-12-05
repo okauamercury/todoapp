@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -11,7 +11,9 @@ import { ActionSheetController, AlertController, ToastController } from '@ionic/
 export class HomePage {
   tarefas: any[] = []; // array tarefas (nome, feito (verdadeiro/falso))
 
-  constructor(private alertCtrl: AlertController, private toast: ToastController, private actionSheetCtrl: ActionSheetController) {
+  constructor(private alertCtrl: AlertController, private toast: ToastController,
+    private actionSheetCtrl: ActionSheetController, private router: Router) {
+
     let tarefasJson = localStorage.getItem('tarefaDb');
     if (tarefasJson != null) {
       this.tarefas = JSON.parse(tarefasJson);
@@ -60,7 +62,7 @@ export class HomePage {
   atualizaLocalStorage() {
     localStorage.setItem('tarefaDb', JSON.stringify(this.tarefas));
   }
-  async abrirOpcoes(tarefa: any, i:any) {
+  async abrirOpcoes(tarefa: any, i: any) {
     const actsheet = await this.actionSheetCtrl.create({
       header: 'Escolha uma ação',
       buttons: [
@@ -68,7 +70,7 @@ export class HomePage {
           text: tarefa.feita ? ' Desmarcar' : 'Marcar ',
           icon: tarefa.feita ? 'checkmark-circle-outline' : 'checkmark-done-circle-outline',
           handler: () => {
-            this.tarefas[i].feita =!this.tarefas[i].feita;
+            this.tarefas[i].feita = !this.tarefas[i].feita;
             this.atualizaLocalStorage();
           }
         },
@@ -85,8 +87,22 @@ export class HomePage {
     });
     actsheet.present();
   }
+  abrirDetalhes(tarefa: any) {
+    // navegar para a rota/detalhes com o objeto tarefa
+    this.router.navigateByUrl('/detalhes', {
+      state: {
+        tarefaSelecionada: tarefa // essa é a chave que será usada na outra pagina
+      }
+    });
+  }
   excluir(tarefa: any) {
     this.tarefas = this.tarefas.filter(t => t != tarefa);
     this.atualizaLocalStorage();
   }
 }
+
+
+
+
+
+

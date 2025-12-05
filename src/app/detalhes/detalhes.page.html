@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/"></ion-back-button>
+      <ion-title>Detalhes da Tarefa</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>{{getTitulo()}}</h2>
+  <p>Status: {{tarefa?.feito ? 'Concluída': 'Pendente'}}</p>
+  <p>Descrição: {{tarefa?.descricao}}</p>
+
+</ion-content>

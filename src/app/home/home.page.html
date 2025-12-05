@@ -13,7 +13,11 @@
       <ion-title size="large"></ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <h3 style="justify-content: center; display: flex;">Organizador de Tarefas</h3>
+  <p style="text-align: center;">Aqui você irá organizar suas tarefas, otimizando tempo e tendo tudo na<br><strong> palma de sua mão</strong></p>
+
+
+  <ion-list style="margin-top: 50px;">
     <ion-item *ngIf="tarefas.length < 1">
       <ion-label>Não há tarefas!</ion-label>
     </ion-item>
@@ -25,12 +29,14 @@
         <ion-icon *ngIf="tarefa.feita" slot="start" name="checkmark-circle" color="success"></ion-icon>
       </ion-item>
       <ion-item-options side="start">
-        <ion-item-option color="danger" (click)="excluir(tarefa)"></ion-item-option>
-        <ion-item-option color="success">Salvar</ion-item-option>
+        <ion-item-option color="danger" (click)="excluir(tarefa)">Excluir</ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="end">
+        <ion-item-option color="success" (click)="abrirDetalhes(tarefas)">Detalhes</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <ion-fab>
+  <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button color="primary" (click)="addTarefa()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
