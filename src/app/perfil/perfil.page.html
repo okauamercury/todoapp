@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: white;"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Gerenciamento de Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large"></ion-title>
+  </ion-toolbar>
+</ion-header>
+<h3 style="justify-content: center; display: flex;">Perfil do Usuário</h3>
+<p style="text-align: center;">Aqui você pode gerenciar as informações do seu perfil e preferências.</p>
+
+<ion-content>
+  <!-- Card e conteudo -->
+  <ion-list style="margin-top: 20%;">
+    <ion-item style="width: 100%; height: 50%;">
+      <ion-card color="primary">
+        <ion-card-header>
+          <ion-card-title>Tarefas</ion-card-title>
+          <ion-card-subtitle>Aqui terá o menu rapido para tarefas</ion-card-subtitle>
+        </ion-card-header>
+
+        <!-- <ion-card-content> Card Content </ion-card-content> -->
+      </ion-card>
+
+      <ion-card color="danger">
+        <ion-card-header>
+          <ion-card-title>Perfil</ion-card-title>
+          <ion-card-subtitle>Parte onde terá informaçõs sobre o Usuário</ion-card-subtitle>
+        </ion-card-header>
+        <!-- <ion-card-content> Card Content </ion-card-content> -->
+      </ion-card>
+    </ion-item>
+    <ion-item style="width: 100%; height: 50%;">
+      <ion-card color="success">
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> Card Content </ion-card-content>
+      </ion-card>
+      <ion-card color="warning">
+        <ion-card-header>
+          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> Card Content </ion-card-content>
+      </ion-card>
+
+    </ion-item>
+  </ion-list>
+
+ <!-- Footer -->
+  <ion-footer style="margin-top: 40%;">
+    <ion-toolbar>
+      <ion-button expand="full" color="primary" (click)="salvarPerfil()">Salvar Perfil</ion-button>
+    </ion-toolbar>
+  </ion-footer>
+
+
+</ion-content>
